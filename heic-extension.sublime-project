@@ -1,0 +1,20 @@
+{
+    "folders":
+    [
+        {
+            "path": ".",
+            "folder_exclude_patterns": [
+                ".git",
+                "build",
+                "vcpkg",
+                "vcpkg_installed"
+            ],
+            "file_exclude_patterns": [
+                "*.o",
+                "*.so",
+                "*.dll",
+                "*.exe"
+            ]
+        }
+    ]
+}

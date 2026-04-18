@@ -2,3 +2,6 @@ build/
 .cache/
 vcpkg_installed/
 *.sublime-workspace
+*.so
+*.dll
+*.exe
