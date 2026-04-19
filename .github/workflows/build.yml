@@ -1,0 +1,27 @@
+name: Build Windows Extension
+
+on: 
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch: 
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Windows vcpkg and Build
+      run: |
+        git clone https://github.com/microsoft/vcpkg.git
+        .\vcpkg\bootstrap-vcpkg.bat
+        cmake -B build_win -S . -DCMAKE_TOOLCHAIN_FILE=.\vcpkg\scripts\buildsystems\vcpkg.cmake
+        cmake --build build_win --config Release
+
+    - name: Upload the finished DLL
+      uses: actions/upload-artifact@v4
+      with:
+        name: HeicDecoder-Plugin
+        path: build_win/Release/HeicDecoder.dll

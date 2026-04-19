@@ -5,4 +5,4 @@ vcpkg_installed/
 *.so
 *.dll
 *.exe
-build_win
+build_win/
