@@ -13,7 +13,10 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    - name: Configure and Auto-Install libheif
+    - name: Force Install libheif
+      run: vcpkg install libheif:x64-windows
+
+    - name: Configure CMake
       run: cmake -B build_win -S . "-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DVCPKG_TARGET_TRIPLET=x64-windows"
 
     - name: Build the DLL
