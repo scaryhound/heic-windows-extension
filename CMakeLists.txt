@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(libheif CONFIG REQUIRED)
 
-set(SOURCES src/HeicDecoder.cpp src/dllmain.cpp src/exports.def)
+set(SOURCES src/HeicDecoder.cpp )
 
 add_library(HeicDecoder SHARED ${SOURCES})
 
