@@ -18,3 +18,4 @@ if(WIN32)
 endif()
 
 set_target_properties(HeicDecoder PROPERTIES SUFFIX ".dll")
+set_property(TARGET HeicDecoder PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
