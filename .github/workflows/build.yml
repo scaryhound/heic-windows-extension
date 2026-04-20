@@ -22,8 +22,10 @@ jobs:
     - name: Build the DLL
       run: cmake --build build_win --config Release
 
-    - name: Upload the finished DLL
+    - name: Upload the finished DLLs
       uses: actions/upload-artifact@v4
       with:
         name: HeicDecoder-Plugin
-        path: build_win/Release/HeicDecoder.dll
+        path: build_win/Release/*.dll
+
+    
