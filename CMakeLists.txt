@@ -17,4 +17,4 @@ if(WIN32)
 	target_link_libraries(HeicDecoder PRIVATE ole32 oleaut32 windowscodecs uuid)
 endif()
 
-set_target_properties(HeicDecoder PROPERTIES SUFFIX ".dll"
+set_target_properties(HeicDecoder PROPERTIES SUFFIX ".dll")
