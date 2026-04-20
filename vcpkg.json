@@ -1,5 +1,8 @@
 {
-	"name": "heic-windows-extension",
-	"version": "1.0.0", 
-	"dependencies": ["libheif"]
+  "name": "heic-extension",
+  "version": "1.0.0",
+  "dependencies": [
+    "libheif"
+  ],
+  "builtin-baseline": "8133036" 
 }

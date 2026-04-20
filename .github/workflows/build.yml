@@ -13,19 +13,17 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    - name: Install Dependencies from Manifest
-      run: vcpkg install --triplet x64-windows
+    - name: Install Dependencies (Static)
+      run: vcpkg install --triplet x64-windows-static
 
     - name: Configure CMake
-      run: cmake -B build_win -S . "-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DVCPKG_TARGET_TRIPLET=x64-windows"
+      run: cmake -B build_win -S . "-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DVCPKG_TARGET_TRIPLET=x64-windows-static"
 
     - name: Build the DLL
       run: cmake --build build_win --config Release
 
-    - name: Upload the finished DLLs
+    - name: Upload the finished DLL
       uses: actions/upload-artifact@v4
       with:
         name: HeicDecoder-Plugin
-        path: build_win/Release/*.dll
-
-    
+        path: build_win/Release/HeicDecoder.dll
