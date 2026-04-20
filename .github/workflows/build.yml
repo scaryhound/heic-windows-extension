@@ -15,10 +15,10 @@ jobs:
 
     - name: Install Dependencies (Static)
       run: vcpkg install --triplet x64-windows-static
-
+    
     - name: Configure CMake
-      run: cmake -B build_win -S . "-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DVCPKG_TARGET_TRIPLET=x64-windows-static" "-DCMAKE_EXE_LINKER_FLAGS=/NODEFAULTLIB:MSVCRT"
-   
+      run: cmake -B build_win -S . "-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DVCPKG_TARGET_TRIPLET=x64-windows-static"
+    
     - name: Build the DLL
       run: cmake --build build_win --config Release
 
