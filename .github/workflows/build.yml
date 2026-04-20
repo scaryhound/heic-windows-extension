@@ -1,3 +1,5 @@
+name: Build Windows Extension
+
 on: 
   push:
     branches: [ "main", "master" ]
@@ -11,13 +13,11 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    - name: Setup Windows vcpkg and Build
-      run: |
-        git clone https://github.com/microsoft/vcpkg.git
-        .\vcpkg\bootstrap-vcpkg.bat
-        .\vcpkg\vcpkg install libheif:x64-windows
-        cmake -B build_win -S . -DCMAKE_TOOLCHAIN_FILE=.\vcpkg\scripts\buildsystems\vcpkg.cmake -A x64
-        cmake --build build_win --config Release
+    - name: Configure and Auto-Install libheif
+      run: cmake -B build_win -S . "-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DVCPKG_TARGET_TRIPLET=x64-windows"
+
+    - name: Build the DLL
+      run: cmake --build build_win --config Release
 
     - name: Upload the finished DLL
       uses: actions/upload-artifact@v4
