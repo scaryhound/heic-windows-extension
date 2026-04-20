@@ -1,5 +1,3 @@
-name: Build Windows Extension
-
 on: 
   push:
     branches: [ "main", "master" ]
@@ -17,7 +15,8 @@ jobs:
       run: |
         git clone https://github.com/microsoft/vcpkg.git
         .\vcpkg\bootstrap-vcpkg.bat
-        cmake -B build_win -S . -DCMAKE_TOOLCHAIN_FILE=.\vcpkg\scripts\buildsystems\vcpkg.cmake
+        .\vcpkg\vcpkg install libheif:x64-windows
+        cmake -B build_win -S . -DCMAKE_TOOLCHAIN_FILE=.\vcpkg\scripts\buildsystems\vcpkg.cmake -A x64
         cmake --build build_win --config Release
 
     - name: Upload the finished DLL
